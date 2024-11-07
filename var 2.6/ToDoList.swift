@@ -9,9 +9,14 @@ struct ToDoList: View {
     @State var showingSheet = false
     @State var id = false
     var body: some View {
-        NavigationStack {
+  
             ZStack(alignment: .bottomTrailing) {
                 List{
+                    HStack{
+                        Text("非表示")
+                        Spacer()
+                        Text("削除")
+                    }
                     ForEach(taskLimit.taskLimitMng.indices, id: \.self) { index in
                         Section(header: Text(formatDate(taskLimit.taskLimitMng[index].limit))) {
                             let tasks = taskLimit.taskLimitMng[index]
@@ -54,20 +59,11 @@ struct ToDoList: View {
                     // 既存のuserTaskオブジェクトを渡す
                         .environmentObject(UserData())
                 }
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Text("消去")
-                    }
-                }
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Text("非表示")
-                    }
-                }
+                
             }
         }
         
-    }
+    
     func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "No Date" }
         let formatter = DateFormatter()
