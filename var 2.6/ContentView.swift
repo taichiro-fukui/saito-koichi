@@ -52,6 +52,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(UserData()) // Provide a mock instance of UserData
             .environmentObject(UserTask())
-            //.environmentObject(TaskDate2())
+            .environmentObject(TaskLimit())
     }
 }
